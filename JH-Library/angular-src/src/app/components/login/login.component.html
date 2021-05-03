@@ -1,0 +1,20 @@
+<h2 class="page-header" >Login</h2>
+<form class="form-signin" (submit)="onLoginSubmit()">
+        <div class="form-group">
+          <label for="Username">Username</label>
+          <input type="text" class="form-control" placeholder="Enter Username" [(ngModel)]="username" name="username">
+        </div>
+        <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" placeholder=" Enter Password" [(ngModel)]="password" name="password">
+        </div>
+        <input class="btn btn-lg btn-primary" type="submit" value="Login">
+</form>
+<br>
+<a href="/auth/kakao">
+  <img src="https://usefulpa.s3.amazonaws.com/images/2014/kakao_account_login_btn_large_narrow_ov.png" style="height: 50px; width: 25%"/>
+</a>
+<br>
+<a href="/auth/naver">
+  <img src="https://postfiles.pstatic.net/20150118_21/aspkorea_1421587735186ks6GO_PNG/%B3%D7%C0%CC%B9%F6_%BE%C6%C0%CC%B5%F0%B7%CE_%B7%CE%B1%D7%C0%CE_%BF%CF%BC%BA%C7%FC_Green.PNG?type=w2" style="height: 50px; width: 25%"/>
+</a>

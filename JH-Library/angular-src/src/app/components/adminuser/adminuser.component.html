@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="text-center">Profile</th>
+      <th scope="col" class="text-center">name</th>
+      <th scope="col" class="text-center">Email</th>
+      <th scope="col" class="text-center">Address</th>
+      <th scope="col" class="text-center">Phone Number</th>
+      <th scope="col" class="text-center">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of user">
+      <td><img src={{i.image}} style="height: 150px; width: 150px;"></td>
+      <td class="text-center"><br><br><br>{{i.name}}</td>
+      <td class="text-center"><br><br><br>{{i.email}}</td>
+      <td class="text-center"><br><br><br>{{i.address}}</td>
+      <td class="text-center"><br><br><br>{{i.phonenumber}}</td>
+      <td class="text-center"><br><br><br><button type="button" class="btn btn-danger btn-lg" (click)="remove(i._id)">Remove</button></td>
+    </tr>
+  </tbody>
+</table>

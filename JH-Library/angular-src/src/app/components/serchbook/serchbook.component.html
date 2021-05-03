@@ -1,0 +1,57 @@
+<br>
+<form>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <select class="custom-select" id="keyword">
+      <option value="all">전체</option>
+      <option value="title">제목</option>
+      <option value="author">저자</option>
+      <option value="pub">출판사</option>
+    </select>
+    <select class="custom-select" id="sort">
+      <option value="sim">유사도순</option>
+      <option value="count">판매량순</option>
+      <option value="date">출간일순</option>
+    </select>
+  </div>
+</div>
+<div class="input-group mb-3">
+  <input type="text" class="form-control"[(ngModel)]="search" name="search">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="submit" id="searhbutton" (click)="Searching()" >Search</button>
+  </div>
+</div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">  </th>
+      <th scope="col" class="text-center">Title</th>
+      <th scope="col" class="text-center">Author</th>
+      <th scope="col" class="text-center">ISBN</th>
+      <th scope="col" class="text-center">PubDate</th>
+      <th scope="col" class="text-center">Request</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of book"  data-toggle="tooltip" data-placement="top" title={{i.description}}>
+      <td><img src={{i.image}} style="height: 150px; width: 150px;"></td>
+      <td><br><br><br><div [innerHTML]=i.title class="text-center"></div></td>
+      <td><br><br><br><div [innerHTML]=i.author class="text-center"></div></td>
+      <td><br><br><br><div [innerHTML]=i.isbn class="text-center"></div></td>
+      <td><br><br><br><div [innerHTML]=i.pubdate class="text-center"></div></td>
+      <td><br><br><br><button type="button" class="btn btn-success btn-lg" (click)="valid(i)">Request</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<nav aria-label="...">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [class.disabled]="page < 4"><a class="page-link" (click)="prepage()">Previous</a></li>
+    <li class="page-item" [class.active]="pagecheck % 3 == 1"><a class="page-link" (click)="pg(1)">{{page}}</a></li>
+    <li class="page-item" [class.active]="pagecheck % 3 == 2"><a class="page-link" (click)="pg(2)">{{page2}}</a></li>
+    <li class="page-item" [class.active]="pagecheck % 3 == 0"><a class="page-link" (click)="pg(3)">{{page3}}</a></li>
+    <li class="page-item"><a class="page-link" (click)="nextpage()">Next</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="text-center">  </th>
+      <th scope="col" class="text-center">Title</th>
+      <th scope="col" class="text-center">Author</th>
+      <th scope="col" class="text-center">ISBN</th>
+      <th scope="col" class="text-center">Control</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of book"  data-toggle="tooltip" data-placement="top" title={{i.description}}>
+      <td><img src={{i.image}} style="height: 100px; width: 100px;"></td>
+      <td>
+        <br><br><div [innerHTML]=i.title class="text-center"></div>
+        <h6 class="text-warning" *ngIf="bookstatus(i)"><span class="badge badge-danger">대출중</span>  대출인 : {{i.borrow}} 대출일 : {{i.when}} 반납일 : {{i.when2}}</h6>
+
+      </td>
+      <td><br><br><div [innerHTML]=i.author class="text-center"></div></td>
+      <td><br><br><div [innerHTML]=i.isbn class="text-center"></div></td>
+      <td>
+        <br><button type="button" class="btn btn-success btn-lg" *ngIf="bookstatus(i)" (click)="returnbook(i)">Return</button>
+        <br><button type="button" class="btn btn-danger btn-lg" (click)="removebook(i)">Delete </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

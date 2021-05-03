@@ -1,0 +1,31 @@
+<div class="row">
+<div class="col-md-4">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src={{user.image}} alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{user.name}}</h5>
+      <p class="card-text">Email : {{user.email}}<br>Address : {{user.address}}<br>Phone Number : {{user.phonenumber}}</p>
+      <a class="btn btn-primary" [routerLink]="['/adjustment']">Adjustment</a>
+    </div>
+  </div>
+</div>
+<div class="col-md-8">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">  </th>
+        <th scope="col" class="text-center">제목</th>
+        <th scope="col" class="text-center">대출일</th>
+        <th scope="col" class="text-center">반납일</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of book"  data-toggle="tooltip" data-placement="top" title={{i.description}}>
+        <td><img src={{i.image}} style="height: 100px; width: 100px;"></td>
+        <td><br><br><div [innerHTML]=i.title class="text-center"></div></td>
+        <td><br><br><div [innerHTML]=i.when class="text-center"></div></td>
+        <td><br><br><div [innerHTML]=i.when2 class="text-center"></div></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

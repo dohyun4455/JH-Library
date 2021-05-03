@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+      <a class="navbar-brand" [routerLink]="['/']">JH-Library</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+            <a class="nav-link" [routerLink]="['/']">Home <span></span></a>
+          </li>
+          <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+            <a class="nav-link" [routerLink]="['/searchbook']">Search </a>
+          </li>
+          <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+            <a class="nav-link" [routerLink]="['/books']">Books </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+            <a class="nav-link" [routerLink]="['/profile']">Profile </a>
+          </li>
+          <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+            <a class="nav-link" [routerLink]="['/register']">Register</a>
+          </li>
+          <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+            <a class="nav-link" [routerLink]="['/login']">Login </a>
+          </li>
+          <li class="nav-item" *ngIf="authService.loggedIn()"><a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
+          </li>
+          <li class="nav-item dropdown" *ngIf="authService.admincheck()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+            <a class="nav-link dropdown-toggle" href="/adminuser" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" [routerLink]="['/adminuser']">User</a>
+              <div class="dropdown-divider"></div>
+                <a class="dropdown-item" [routerLink]="['/adminpage']">Book</a>
+              </div>
+          </li>
+        </ul>
+      </div>
+    </nav>

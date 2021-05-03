@@ -1,0 +1,30 @@
+<br />
+<form>
+<div class="input-group mb-3">
+  <input type="text" class="form-control"[(ngModel)]="search" name="search">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="submit" id="searhbutton" (click)="Searching()" >Search</button>
+  </div>
+</div>
+</form>
+
+<table class="table" *ngIf="searcheck == 1">
+  <thead>
+    <tr>
+      <th scope="col" class="text-center">  </th>
+      <th scope="col" class="text-center">Title</th>
+      <th scope="col" class="text-center">Author</th>
+      <th scope="col" class="text-center">ISBN</th>
+      <th scope="col" class="text-center">Control</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of book"  data-toggle="tooltip" data-placement="top" title={{i.description}}>
+      <td><img src={{i.image}} style="height: 150px; width: 150px;"></td>
+      <td><br><br><br><div [innerHTML]=i.title class="text-center"></div></td>
+      <td><br><br><br><div [innerHTML]=i.author class="text-center"></div></td>
+      <td><br><br><br><div [innerHTML]=i.isbn class="text-center"></div></td>
+      <td><br><br><br><button type="button" class="btn btn-success btn-lg" (click)="borrow(i)" [class.disabled]="borrowcheck(i)">Borrow</button></td>
+    </tr>
+  </tbody>
+</table>
